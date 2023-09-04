@@ -1,0 +1,36 @@
+from tkinter import *
+
+window = Tk()
+window.title("NOK / EUR kalkulacka")
+window.minsize(300, 300)
+window.resizable(True, True)
+window.config(bg="#b6ff95") #0to255.com
+
+#Function for converting
+def exchange():
+    amount_eur = float(NOK_input.get()) * 0.088 #rate Aug 12 2023
+    print(amount_eur)
+    result_label["text"]=round(amount_eur, 2)
+
+#user input in NOK
+NOK_input = Entry(width=15)
+NOK_input.grid(row=0, column=0, padx=10, pady=10)
+
+#Label NOK
+NOK_label = Label(text="NOK", font=("Helvetica", 15), bg="#b6ff95", fg="black")
+NOK_label.grid(row=0, column=1)
+
+#Label result
+result_label = Label(text="0", font=("Helvetica", 15), bg="#b6ff95", fg="black")
+result_label.grid(row=1, column=0)
+
+#Label EUR
+EUR_label = Label(text="EUR", font=("Helvetica", 15), bg="#b6ff95", fg="black")
+EUR_label.grid(row=1, column=1)
+
+#Convert button
+convert_button = Button(text="Convert", font=("Helvetica", 15), command=exchange)
+convert_button.grid(row=1, column=2, padx=10, pady=10)
+
+#main cycle
+window.mainloop()
